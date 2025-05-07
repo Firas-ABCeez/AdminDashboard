@@ -1,5 +1,5 @@
 // EXTERNAL STYLES
-import { rightSectionStyle } from "@/styles/dashboard/style.js";
+import { rightSectionStyle } from "@/styles/dashboard/styles.js";
 
 export default function ToolsPanel() {
 

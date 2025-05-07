@@ -18,7 +18,7 @@ import {
   userNameEmailContainerStyle,
   userNameStyle,
   userEmailStyle
-} from "@/styles/dashboard/style.js";
+} from "@/styles/dashboard/styles.js";
 
 // GLOBAL STORES
 import useIsUserSignedup from "@/stores/auth/useIsUserSignedup";

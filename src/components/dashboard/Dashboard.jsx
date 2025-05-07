@@ -1,5 +1,5 @@
 // EXTERNAL STYLES
-import { dashboardContainerStyle } from "@/styles/dashboard/style.js";
+import { dashboardContainerStyle } from "@/styles/dashboard/styles.js";
 
 // UI COMPONENTS
 import Sidebar from "./sidebar/Sidebar";
