@@ -5,6 +5,7 @@ const useIsUserSignedup = create((set) => ({
     setIsUserSignedup: (isUserSignedup) => set({ isUserSignedup }),
 
     userRegistrationData: {
+        name: 'Kate Middleton',
         email: '',
         password: '',
         role: '',

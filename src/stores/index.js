@@ -1,1 +1,1 @@
-export { default as useIsUserSignedup } from './auth/useIsUserSignedup';
+export { default as useIsUserSignedup } from "./auth/useIsUserSignedup.js";

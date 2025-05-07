@@ -1,5 +1,5 @@
 // PAGES
-import { AuthPage } from "./pages";
+import { AuthPage, DashboardPage } from "./pages";
 
 // GLOBAL STORES
 import { useIsUserSignedup } from "./stores";
@@ -10,10 +10,8 @@ export default function App() {
   const { isUserSignedup } = useIsUserSignedup();
 
   return isUserSignedup ? (
-    <div className="flex flex-col items-center justify-center min-h-svh">
-        Hello world! You are logged in.
-      </div>
-    ) : (
+    <DashboardPage />
+  ) : (
     <AuthPage />
   );
 
