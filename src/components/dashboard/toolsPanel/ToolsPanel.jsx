@@ -1,12 +1,17 @@
 // EXTERNAL STYLES
 import { rightSectionStyle } from "@/styles/dashboard/styles.js";
 
+// UI COMPONENTS
+import Header from "./Header";
+
 export default function ToolsPanel() {
 
     return (
         // Right Section: (contains admin control tools)
         <div div className={rightSectionStyle} >
-            <h1>Right</h1>
+
+            {/* Header Section */}
+            <Header />
         </div >
     )
 }

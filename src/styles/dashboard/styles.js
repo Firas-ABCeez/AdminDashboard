@@ -12,6 +12,7 @@ flex
 flex-col 
 min-w-[250px] 
 h-screen
+border-r-[1px]
 `;
 
 // Logo
@@ -145,4 +146,115 @@ flex-col
 w-full 
 h-screen 
 bg-gray-100
+p-4
+overflow-hidden
+`;
+
+// Header container
+export const headerContainerStyle = `
+w-full 
+rounded-md 
+bg-white 
+shadow-sm 
+h-[140px] 
+p-4
+`;
+
+// First Row: (contains the Title, and Add New Admin btn )
+export const firstRowContainerStyle = `
+flex 
+flex-row 
+items-center 
+justify-between 
+space-x-100
+`;
+
+// Title
+export const titleStyle = `
+font-bold 
+text-2xl 
+text-[#6E39CB] 
+min-w-[200px]
+`;
+
+// Add new admin - Btn
+export const addNewAdminBtnStyle = `
+flex 
+flex-row 
+justify-evenly 
+items-center 
+bg-[#3742fa] 
+hover:bg-[#1e90ff] 
+border-0 
+cursor-pointer
+`;
+
+// Second Row: (contains the filters)
+export const secondRowContainerStyle = `
+flex 
+flex-row 
+items-center 
+justify-start 
+space-x-5 
+mt-7
+`;
+
+// FILTER 1: Role selector
+export const roleFilterSelectorStyle = `
+flex 
+items-center 
+shadow-sm 
+border-[1px] 
+rounded-sm 
+w-[250px] 
+bg-white
+`;
+
+// FILTER 1: Role selector (SelectTrigger)
+export const roleFilterTriggerStyle = `
+focus:outline-none 
+focus:ring-0 
+focus:right-offset-0 
+focus-visible:ring-0 
+focus-visible:ring-offset-0 
+border-none 
+rounded-none 
+shadow-none 
+w-full
+`;
+
+// FILTER 2: Status selector 
+export const statusFilterSelectorStyle = `
+flex 
+items-center 
+shadow-sm 
+border-[1px] 
+rounded-sm 
+w-[250px] 
+bg-white
+`;
+
+// FILTER 2: Status selector (SelectTrigger)
+export const statusFilterTriggerStyle = `
+focus:outline-none 
+focus:ring-0 
+focus:right-offset-0 
+focus-visible:ring-0 
+focus-visible:ring-offset-0 
+border-none 
+rounded-none 
+shadow-none 
+w-full
+`;
+
+// Apply Filter Btn 
+export const applyFilterBtn = `
+flex 
+flex-row 
+justify-evenly 
+items-center 
+bg-[#1e90ff]
+hover:bg-[#3742fa] 
+border-0 cursor-pointer 
+shadow-md
 `;
