@@ -1,19 +1,20 @@
 // PAGES
 import { AuthPage } from "./pages";
 
+// GLOBAL STORES
+import { useIsUserSignedup } from "./stores";
+
 export default function App() {
 
-  const isLogedIn: boolean = false;
+  // Get the user signup state from the global store
+  const { isUserSignedup } = useIsUserSignedup();
 
-  if (isLogedIn) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-svh">
+  return isUserSignedup ? (
+    <div className="flex flex-col items-center justify-center min-h-svh">
         Hello world! You are logged in.
       </div>
-    )
-  }
-
-  return (
+    ) : (
     <AuthPage />
-  )
+  );
+
 }

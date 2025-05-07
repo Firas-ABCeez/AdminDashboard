@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // UI COMPONENTS
 import { Button } from "../ui/button";
 import { Input } from "../ui/input"
@@ -9,14 +11,34 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { ThreeCircles } from 'react-loader-spinner';
 
 // ICONS
 import { RiUser3Line } from "react-icons/ri";
 import { MdOutlineLock } from "react-icons/md";
 import { RiUserReceived2Line } from "react-icons/ri";
 
+// GLOBAL STORES
+import { useIsUserSignedup } from "@/stores";
 
 export default function Auth() {
+
+    // Collect the form data from the inputs, and store them in its global store
+    const { setIsUserSignedup, setUserRegistrationData, userRegistrationData } = useIsUserSignedup();
+
+    // Loading state for the signup button
+    const [loadingSignup, setLoadingSignup] = useState<boolean>(false);
+
+    // Handle the signup button click event
+    const handleSignup = (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoadingSignup(true);
+        setTimeout(() => { // Simulate a network request
+            setIsUserSignedup(true); // Set the user signup state to true
+        }, 3000)
+    }
+
+
     return (
         <div className="flex flex-row container-fluid m-0 p-0">
 
@@ -32,24 +54,24 @@ export default function Auth() {
                     </div>
 
                     {/* Signup form */}
-                    <form className="w-full flex flex-col items-center space-y-3">
+                    <form onSubmit={handleSignup} className="w-full flex flex-col items-center space-y-3">
 
                         {/* Email Input */}
                         <div className="flex items-center shadow-sm border-[1px] rounded-sm w-[300px] p-1 bg-gray-100">
                             <Label htmlFor="email" className="ml-3 mr-3"><RiUser3Line size="18" /></Label>
-                            <Input type="email" id="email" placeholder="Email" className="focus:outline-none focus:ring-0 focus:right-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 border-none shadow-none" required />
+                            <Input disabled={loadingSignup} onChange={(e) => setUserRegistrationData({ ...userRegistrationData, email: e.target.value })} type="email" id="email" placeholder="Email" className="focus:outline-none focus:ring-0 focus:right-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 border-none shadow-none" required />
                         </div>
 
                         {/* Password Input */}
                         <div className="flex items-center shadow-sm border-[1px] rounded-sm w-[300px] p-1 bg-gray-100">
                             <Label htmlFor="password" className="ml-3 mr-3"><MdOutlineLock size="18" /></Label>
-                            <Input type="password" id="password" placeholder="Password" className="focus:outline-none focus:ring-0 focus:right-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 border-none rounded-none shadow-none" required />
+                            <Input disabled={loadingSignup} onChange={(e) => setUserRegistrationData({ ...userRegistrationData, password: e.target.value })} type="password" id="password" placeholder="Password" className="focus:outline-none focus:ring-0 focus:right-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 border-none rounded-none shadow-none" required />
                         </div>
 
                         {/* Role Input */}
                         <div className="flex items-center shadow-sm border-[1px] rounded-sm w-[300px] p-1 bg-gray-100">
                             <Label htmlFor="role" className="ml-3 mr-5"><RiUserReceived2Line size="18" /></Label>
-                            <Select>
+                            <Select disabled={loadingSignup} onValueChange={(value) => setUserRegistrationData({ ...userRegistrationData, role: value })}>
                                 <SelectTrigger id="role" className="w-full focus:outline-none focus:ring-0 focus:right-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 border-none rounded-none shadow-none p-1">
                                     <SelectValue placeholder="Role" />
                                 </SelectTrigger>
@@ -62,7 +84,21 @@ export default function Auth() {
                             </Select>
                         </div>
 
-                        <Button className="bg-[#6E39CB] text-white font-semibold my-4 py-2 px-8 rounded cursor-pointer">Sign up</Button>
+                        <Button
+                            type="submit"
+                            disabled={loadingSignup || userRegistrationData.email == '' || userRegistrationData.password == '' || userRegistrationData.role == ''}
+                            className="bg-[#6E39CB] text-white font-semibold my-4 py-2 px-10 rounded cursor-pointer">
+                            {loadingSignup ? (
+                                <div className="flex flex-row items-center justify-center space-x-3">
+                                <span>Please wait</span>
+                                <ThreeCircles
+                                    visible={true}
+                                    color="white"
+                                    ariaLabel="tail-spin-loading"
+                                />
+                                </div>
+                            ) : 'Sign up'}
+                        </Button>
                     </form>
                 </div>
 
