@@ -1,7 +1,6 @@
 import { create } from 'zustand';
-import type { useIsUserSignedup_interface } from '@/interfaces';
 
-const useIsUserSignedup = create<useIsUserSignedup_interface>((set) => ({
+const useIsUserSignedup = create((set) => ({
     isUserSignedup: false,
     setIsUserSignedup: (isUserSignedup) => set({ isUserSignedup }),
 

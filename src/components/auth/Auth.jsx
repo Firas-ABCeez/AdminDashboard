@@ -27,10 +27,10 @@ export default function Auth() {
     const { setIsUserSignedup, setUserRegistrationData, userRegistrationData } = useIsUserSignedup();
 
     // Loading state for the signup button
-    const [loadingSignup, setLoadingSignup] = useState<boolean>(false);
+    const [loadingSignup, setLoadingSignup] = useState(false);
 
     // Handle the signup button click event
-    const handleSignup = (e: React.FormEvent) => {
+    const handleSignup = (e) => {
         e.preventDefault();
         setLoadingSignup(true);
         setTimeout(() => { // Simulate a network request
