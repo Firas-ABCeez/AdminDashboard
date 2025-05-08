@@ -3,6 +3,7 @@ import { rightSectionStyle } from "@/styles/dashboard/styles.js";
 
 // UI COMPONENTS
 import Header from "./Header";
+import Body from "./Body";
 
 export default function ToolsPanel() {
 
@@ -12,6 +13,10 @@ export default function ToolsPanel() {
 
             {/* Header Section */}
             <Header />
+
+            {/* Body Section */}
+            <Body />
+            
         </div >
     )
 }

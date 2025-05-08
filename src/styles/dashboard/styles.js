@@ -156,8 +156,9 @@ w-full
 rounded-md 
 bg-white 
 shadow-sm 
-h-[140px] 
+h-[130px] 
 p-4
+z-10
 `;
 
 // First Row: (contains the Title, and Add New Admin btn )
@@ -196,11 +197,13 @@ flex-row
 items-center 
 justify-start 
 space-x-5 
-mt-7
+pb-1
+mt-5
 `;
 
 // FILTER 1: Role selector
 export const roleFilterSelectorStyle = `
+cursor-pointer
 flex 
 items-center 
 shadow-sm 
@@ -212,6 +215,7 @@ bg-white
 
 // FILTER 1: Role selector (SelectTrigger)
 export const roleFilterTriggerStyle = `
+cursor-pointer
 focus:outline-none 
 focus:ring-0 
 focus:right-offset-0 
@@ -225,6 +229,7 @@ w-full
 
 // FILTER 2: Status selector 
 export const statusFilterSelectorStyle = `
+cursor-pointer
 flex 
 items-center 
 shadow-sm 
@@ -236,6 +241,7 @@ bg-white
 
 // FILTER 2: Status selector (SelectTrigger)
 export const statusFilterTriggerStyle = `
+cursor-pointer
 focus:outline-none 
 focus:ring-0 
 focus:right-offset-0 
@@ -257,4 +263,174 @@ bg-[#1e90ff]
 hover:bg-[#3742fa] 
 border-0 cursor-pointer 
 shadow-md
+`;
+
+// Clear Filter Btn 
+export const clearFilterBtn = `
+flex 
+flex-row 
+justify-evenly 
+items-center 
+bg-gray-600
+hover:bg-gray-800 
+border-0 
+cursor-pointer 
+shadow-md
+`;
+
+// Add new admin dialog: Img section
+export const addNewAdminImgSectionStyle = `
+w-20 
+h-20 
+rounded-full 
+bg-gray-100 
+flex items-center 
+justify-center 
+relative
+`;
+
+// Add new admin dialog: Img
+export const addNewAdminImgStyle = `
+w-full h-full 
+rounded-full 
+object-cover
+`;
+
+// Add new admin dialog: Edit Icon
+export const addNewAdminIconStyle = `
+absolute 
+bottom-0 
+right-0 
+bg-purple-600 
+text-white 
+w-5 
+h-5 
+rounded-full 
+text-xs 
+flex items-center 
+justify-center 
+cursor-pointer
+`;
+
+// Add new admin dialog: Img section > Title + subtitle
+export const addNewAdminImgTitleStyle = `
+text-sm 
+text-black 
+font-semibold
+`;
+
+export const addNewAdminImgSubtitleStyle = `
+text-xs 
+text-gray-700
+`;
+
+// Add new admin dialog: Inputs section
+export const addNewAdminInputsSectionStyle = `
+grid 
+grid-cols-1 
+md:grid-cols-2 
+gap-4
+`;
+
+// Add new admin dialog: Inputs labels
+export const addNewAdminInputsLabelsStyle = `
+block 
+mb-1 
+text-sm 
+text-black
+`;
+
+// Add new admin dialog: Inputs 
+export const addNewAdminInputsStyle = `
+border 
+p-2 
+rounded-lg 
+w-full 
+bg-gray-50 
+text-black
+`;
+
+// Add new admin dialog: SelectTrigger 
+export const addNewAdminSelectTriggerStyle = `
+w-full 
+bg-gray-50 
+text-black
+`;
+
+// Add new admin dialog: Footer 
+export const addNewAdminFooterStyle = `
+flex 
+justify-end 
+gap-3 
+mt-6
+`;
+
+// Add new admin dialog: Discard Trigger Btn  
+export const addNewAdminDiscardTriggerBtnStyle = `
+shadow-sm
+border-[1px] 
+border-gray-300 
+text-sm 
+px-5 
+py-1.5 
+bg-[#f4f5f9] 
+hover:bg-gray-200 
+text-gray-800 
+rounded-sm 
+font-semibold                          
+cursor-pointer
+`;
+
+// Add new admin dialog: Content container  
+export const addNewAdminContentContainerStyle = `
+w-[300px] 
+flex 
+flex-col 
+items-center
+`;
+
+// Add new admin dialog: Footer > Cancel Btn  
+export const addNewAdminCancelBtnStyle = `
+border-[1px] 
+border-gray-300 
+text-sm 
+px-5 
+py-1.5 
+bg-[#f4f5f9] 
+hover:bg-gray-200 
+text-gray-800 
+rounded-sm 
+font-semibold                      
+cursor-pointer
+`;
+
+// Add new admin dialog: Footer > Discard Btn  
+export const addNewAdminDiscardBtnStyle = `
+border-[1px] 
+border-[#6e39cb] 
+text-sm 
+px-5 
+py-1.5 
+bg-[#6e39cb] 
+hover:bg-[#9458ff] 
+text-white 
+rounded-sm 
+font-semibold
+cursor-pointer
+`;
+
+// Add new admin dialog: Footer > Save Btn  
+export const addNewAdminSaveBtnStyle = `
+shadow-md
+border-[1px] 
+border-[#6e39cb] 
+text-sm 
+px-5 
+py-1.5 
+bg-[#6e39cb] 
+hover:bg-[#9458ff] 
+text-white 
+rounded-sm 
+font-semibold
+cursor-pointer
 `;

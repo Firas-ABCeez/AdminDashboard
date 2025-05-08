@@ -93,6 +93,7 @@ export default function SignupForm() {
                                 <SelectValue placeholder="Role" />
                             </SelectTrigger>
                             <SelectContent>
+                                <SelectItem value="supr-admin">Super Admin</SelectItem>
                                 <SelectItem value="admin">Admin</SelectItem>
                                 <SelectItem value="cust-supp">Customer support</SelectItem>
                                 <SelectItem value="js-deve">Javascript developer</SelectItem>
