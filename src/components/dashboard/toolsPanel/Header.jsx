@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // UI COMPONENTS
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
@@ -60,6 +60,9 @@ import {
     addNewAdminSaveBtnStyle
 } from '@/styles/dashboard/styles.js'
 
+// GLOBAL STORES
+import useFilter from "@/stores/filter/useFilter";
+
 
 export default function Header() {
 
@@ -76,6 +79,15 @@ export default function Header() {
         status: '',
         email: '',
     });
+
+    // Get the filter states to update from useFilter global store
+    const { setRole, setStatus, setApply, setReset, reset, apply, role, status } = useFilter();
+
+    // Reset the filter inputs when user clicks on Reset btn
+    useEffect(() => {
+        setRole("")
+        setStatus("")
+    }, [reset])
 
     return (
         // Header container
@@ -266,7 +278,7 @@ export default function Header() {
                 {/* FILTER 1: Role selector */}
                 <div className={roleFilterSelectorStyle}>
                     <Label htmlFor="role" className="mx-3"><RiUserReceived2Line size="18" /></Label>
-                    <Select>
+                    <Select onValueChange={(value) => setRole(value)} value={role}>
                         <SelectTrigger id="role" className={roleFilterTriggerStyle}>
                             <SelectValue placeholder="Filter by Role" />
                         </SelectTrigger>
@@ -283,7 +295,7 @@ export default function Header() {
                 {/* FILTER 2: Status selector */}
                 <div className={statusFilterSelectorStyle}>
                     <Label htmlFor="status" className="mx-3"><SiStatuspal size="18" /></Label>
-                    <Select>
+                    <Select onValueChange={(value) => setStatus(value)} value={status}>
                         <SelectTrigger id="status" className={statusFilterTriggerStyle}>
                             <SelectValue placeholder="Filter by Status" />
                         </SelectTrigger>
@@ -295,13 +307,13 @@ export default function Header() {
                 </div>
 
                 {/* Apply Filter Btn */}
-                <Button type="button" className={applyFilterBtn}>
+                <Button onClick={() => setApply(!apply)} type="button" className={applyFilterBtn}>
                     <FaFilter />
                     <span>Apply filter</span>
                 </Button>
 
                 {/* Clear Filter Btn */}
-                <Button type="button" className={clearFilterBtn}>
+                <Button onClick={() => setReset(!reset)} type="button" className={clearFilterBtn}>
                     <MdOutlineFilterAltOff />
                     <span>Reset</span>
                 </Button>

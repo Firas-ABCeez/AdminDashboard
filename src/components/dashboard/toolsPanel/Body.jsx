@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // UI COMPONENTS
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
@@ -42,6 +42,9 @@ import { database } from '@/api/data.js';
 // ICONS
 import { FaRegEdit } from "react-icons/fa";
 
+// GLOBAL STORE
+import useFilter from '@/stores/filter/useFilter.js';
+
 
 export default function Body() {
 
@@ -59,6 +62,30 @@ export default function Body() {
         role: null,
         status: null
     })
+
+    // Get the filters states from its global store
+    const { status, role, apply, reset } = useFilter();
+
+    // Store the initial version of the data
+    const [data, setData] = useState(database);
+
+    // Filter the data only when user clicks on 'apply filter'
+    useEffect(() => {
+        if (role || status) {
+            const newFilteredData = database.filter(admin =>
+                (!role || admin.role === role) &&
+                (!status || admin.status === status)
+            );
+            setData(newFilteredData);
+        } else {
+            setData(database);
+        }
+    }, [apply]);
+
+    // Reset the data when user clicks on Reset btn
+    useEffect(() => {
+        setData(database);
+    }, [reset])
 
     return (
         // Header container
@@ -82,7 +109,7 @@ export default function Body() {
                 </thead>
 
                 <tbody>
-                    {database.map((person, index) => (
+                    {data?.length > 0 ? data.map((person, index) => (
 
                         // Table: tbody > tr
                         <tr key={index} className={tableTbodyTrStyles}>
@@ -100,7 +127,15 @@ export default function Body() {
                             </td>
 
                             {/* Table: tbody > td */}
-                            <td className={tableTbodyTdStyles}>{person.role}</td>
+                            <td className={tableTbodyTdStyles}>
+                                {
+                                    person.role === "admin" && "Admin" ||
+                                    person.role === "cust-supp" && "Customer support" ||
+                                    person.role === "js-deve" && "Javascript developer" ||
+                                    person.role === "oper-mana" && "Operation manager" ||
+                                    person.role === "supr-admin" && "Super Admin"
+                                }
+                            </td>
                             <td className={tableTbodyTdStyles}>{person.id}</td>
                             <td className={tableTbodyTdStyles}>{person.phone}</td>
                             <td className={tableTbodyTdStyles}>
@@ -174,15 +209,8 @@ export default function Body() {
                                                         </div>
                                                         <div>
                                                             <label className="block mb-1 text-sm text-black">Role</label>
-                                                            <Select value={
-                                                                updateProfile.role == null ?
-                                                                    person.role === "Admin" && "admin" ||
-                                                                    person.role === "Customer support" && "cust-supp" ||
-                                                                    person.role === "Javascript developer" && "js-deve" ||
-                                                                    person.role === "Operation manager" && "oper-mana" ||
-                                                                    person.role === "Super Admin" && "supr-admin" : updateProfile.role
-
-                                                            }
+                                                            <Select
+                                                                value={updateProfile.role == null ? person.role : updateProfile.role}
                                                                 onValueChange={(value) => setUpdateProfile({ ...updateProfile, role: value })}
                                                             >
                                                                 <SelectTrigger id="role" className="w-full bg-gray-50 text-black">
@@ -335,7 +363,11 @@ export default function Body() {
                                 </div>
                             </td>
                         </tr>
-                    ))}
+                    )) : (<div className="absolute w-full text-center">
+                        <h1 className="mt-[14%] text-[35px] font-bold text-gray-400">
+                            Oops! No data available
+                        </h1>
+                    </div>)}
                 </tbody>
             </table>
 
