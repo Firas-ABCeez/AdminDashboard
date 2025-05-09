@@ -5,7 +5,6 @@ export default function ImgCoverSection() {
 
     return (
         // Right Section: (contains the background-img cover)
-        <div className={imgCoverSectionStyle} style={{ backgroundImage: 'url("/src/assets/images/auth-background.png")' }}>
-        </div>
+        <div className={imgCoverSectionStyle} style={{ backgroundImage: 'url("/assets/images/auth-background.png")' }}></div>
     )
 }
