@@ -11,7 +11,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { ThreeCircles } from 'react-loader-spinner';
 
 // ICONS
 import { RiUser3Line } from "react-icons/ri";
@@ -109,8 +108,7 @@ export default function SignupForm() {
                         {loadingSignup ? (
                             // Loading spinner
                             <div className={loadingSpinnerStyle}>
-                                <span>Please wait</span>
-                                <ThreeCircles visible={true} color="white" ariaLabel="tail-spin-loading" />
+                                <span>Please wait ...</span>
                             </div>
                         ) : 'Sign up'}
                     </Button>
