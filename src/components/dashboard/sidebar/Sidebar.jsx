@@ -33,7 +33,7 @@ export default function Sidebar() {
     <div className={leftSectionStyle}>
 
       {/* Logo */}
-      <div className={logoStyle} style={{ backgroundImage: "url('/assets/images/logo.png')" }}></div>
+      <div className={logoStyle} style={{ backgroundImage: "url('/images/logo.png')" }}></div>
 
       {/* Navigation Links */}
       <div className={navigationLinksStyle}>
